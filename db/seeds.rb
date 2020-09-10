@@ -10,3 +10,4 @@ c1 = Character.create(name: "Luke Skywalker", species: "Human", homeworld: "Tato
 c2 = Character.create(name: "Han Solo", species: "Human", homeworld: "Corellia")
 c3 = Character.create(name: "Yoda", species: "Unknown", homeworld: "Dagobah")
 c4 = Character.create(name: "C3PO", species: "Robot", homeworld: "Tatooine")
+c5 = Character.create(name: "R2D2", species: "Robot", homeworld: "Naboo")
