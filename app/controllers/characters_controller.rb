@@ -13,6 +13,13 @@ class CharactersController < ApplicationController
         end
     end
 
+    def destroy
+        character = Character.find_by(id: params[:id])
+        if character.destroy
+            render json: {message: "DEATH occured."}
+        end
+    end
+
     private
 
     def character_params
