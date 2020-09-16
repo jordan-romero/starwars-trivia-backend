@@ -13,6 +13,10 @@ class CharactersController < ApplicationController
         end
     end
 
+    def update 
+        byebug
+    end 
+
     def destroy
         character = Character.find_by(id: params[:id])
         if character.destroy
