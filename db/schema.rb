@@ -10,15 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_153601) do
+ActiveRecord::Schema.define(version: 2020_09_17_163348) do
 
   create_table "characters", force: :cascade do |t|
+    t.integer "planet_id", null: false
     t.string "name"
-    t.string "species"
-    t.string "homeworld"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "avatar"
+    t.string "species"
+    t.index ["planet_id"], name: "index_characters_on_planet_id"
   end
 
+  create_table "planets", force: :cascade do |t|
+    t.string "name"
+    t.string "climate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "planet_image"
+    t.string "env_image"
+    t.string "population"
+  end
+
+  add_foreign_key "characters", "planets"
 end
