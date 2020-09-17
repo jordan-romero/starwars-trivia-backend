@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
     def index 
-        characters = Character.all 
+        characters = Character.order(:name)
         render json: CharacterSerializer.new(characters).to_serialized_json 
     end 
 
@@ -14,7 +14,13 @@ class CharactersController < ApplicationController
     end
 
     def update 
-        byebug
+        character = Character.find_by(id: params[:id])
+        character.update(character_params)
+        if character.save
+            render json: CharacterSerializer.new(character).to_serialized_json 
+        else
+            render json: "Could not save Character"
+        end
     end 
 
     def destroy
