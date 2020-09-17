@@ -7,20 +7,22 @@ class CharactersController < ApplicationController
 
     def create
         character = Character.new(character_params)
+        # byebug
         if character.save
             render json: CharacterSerializer.new(character).to_serialized_json 
         else
-            render json: "Could not save Character"
+            render json: {message: "Could not save Character"}
         end
     end
 
     def update 
+        # byebug
         character = Character.find_by(id: params[:id])
         character.update(character_params)
         if character.save
             render json: CharacterSerializer.new(character).to_serialized_json 
         else
-            render json: "Could not save Character"
+            render json: {error: "Could not save Character"}
         end
     end 
 
@@ -34,6 +36,6 @@ class CharactersController < ApplicationController
     private
 
     def character_params
-        params.require(:character).permit(:name, :species, :homeworld, :avatar)
+        params.permit(:name, :species, :avatar, :planet_name)
     end
 end
