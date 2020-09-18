@@ -4,6 +4,8 @@ class PlanetSerializer
     end 
 
     def to_serialized_json
-        @planet.to_json(:except => [:created_at, :updated_at])
+        @planet.to_json(:except => [:created_at, :updated_at], :include => {:characters => {:only => [:name]}})
     end 
 end 
+
+
